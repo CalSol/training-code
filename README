@@ -1,0 +1,9 @@
+CalSol Training Code
+
+This repository hosts all the training code intended to be deployed by students.
+The master branch contains the starter code referenced in the documents.
+The solutions branch contains solutions to the starter code, where applicable.
+
+The master and solutions branch are for the Arduino platform.
+Other device-specific branches:
+brain, brain-solutions - for the BRAIN
