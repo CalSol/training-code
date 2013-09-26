@@ -27,4 +27,16 @@ void loop() {
     digitalWrite(led1Pin, HIGH);
     led1OffTime = millis() + 1000;
   }
+  
+  // The "task" for Switch 2 and LED 2
+  static long led2OffTime = 0;
+
+  if (led2OffTime <= millis()) {
+    digitalWrite(led2Pin, LOW);
+  }
+
+  if (digitalRead(switch2Pin) == LOW) {
+    digitalWrite(led2Pin, HIGH);
+    led2OffTime = millis() + 1000;
+  }
 }
