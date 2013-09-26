@@ -1,6 +1,6 @@
-#define RED 9
-#define GREEN 10
-#define BLUE 11
+#define RED 13
+#define GREEN 14
+#define BLUE 15
 
 float mod(float x, float d) {
     while (x > d) {

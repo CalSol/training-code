@@ -1,7 +1,7 @@
-int led1Pin = 9;
-int led2Pin = 10;
-int switch1Pin = 2;
-int switch2Pin = 3;
+int led1Pin = 13;
+int led2Pin = 14;
+int switch1Pin = 10;
+int switch2Pin = 11;
 
 void setup() {
   pinMode(led1Pin, OUTPUT);

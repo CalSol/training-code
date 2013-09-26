@@ -1,4 +1,4 @@
-int ledPin = 13;
+int ledPin = 12;
 int ledOn = 1;
 
 void setup() {

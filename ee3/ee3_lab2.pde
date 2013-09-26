@@ -1,10 +1,11 @@
-int led1Pin = 9;
-int led2Pin = 10;
-int switchPin = 2;
+int led1Pin = 12;
+int led2Pin = 13;
+int switchPin = 18;
 int potPin = 0;
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(9600);   // Initialize the USB console
+  Serial1.begin(9600);  // Initialize the external UART port
   
   pinMode(led1Pin, OUTPUT);
   pinMode(led2Pin, OUTPUT);
@@ -21,7 +22,7 @@ void loop() {
 
   delay(100);
 
-  while (Serial.available() > 0) {
+  while (Serial1.available() > 0) {
     // Read received data here!
     char inByte = /*YOUR CODE HERE*/
     // Process received data here!

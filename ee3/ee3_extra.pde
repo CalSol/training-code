@@ -1,11 +1,11 @@
 #include <SPI.h>
 
-int led1Pin = 9;
-int led2Pin = 10;
-int switchPin = 2;
-int potPin = A0;
+int led1Pin = 12;
+int led2Pin = 13;
+int switchPin = 18;
+int potPin = 0;
 
-int aclCSPin = 7;
+int aclCSPin = 2;
 
 // MMA7455 Register Map
 int MMA_XOUTL = 0x00;  // X-axis output LSB
