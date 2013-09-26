@@ -69,18 +69,19 @@ void loop() {
   
   // Do some conditioning
   // Take the absolute value of the signed result
-  // YOUR CODE HERE
+  /* YOUR CODE HERE */
   // Cap the result at 1g = 64
-  // YOUR CODE HERE
+  /* YOUR CODE HERE */
   // Scale it to that the full scale is 16
-  // YOUR CODE HERE
+  /* YOUR CODE HERE */
   // Square it to give a linear brightness output
-  // YOUR CODE HERE
+  /* YOUR CODE HERE */
   
   // Write the result as the PWM duty cycle
   analogWrite(led1Pin, xVal);
   
   // Repeat for the Y-axis
+  /* YOUR CODE HERE */
   
   delay(50);
 }
