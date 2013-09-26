@@ -69,19 +69,30 @@ void loop() {
   
   // Do some conditioning
   // Take the absolute value of the signed result
-  /* YOUR CODE HERE */
+  xVal = abs(xVal);
   // Cap the result at 1g = 64
-  /* YOUR CODE HERE */
+  if (xVal > 64) {
+    xVal = 64;
+  }
   // Scale it to that the full scale is 16
-  /* YOUR CODE HERE */
+  xVal = xVal / 4;
   // Square it to give a linear brightness output
-  /* YOUR CODE HERE */
+  xVal = xVal * xVal;
   
   // Write the result as the PWM duty cycle
   analogWrite(led1Pin, xVal);
   
   // Repeat for the Y-axis
-  /* YOUR CODE HERE */
+  signed char yVal = aclReadReg(MMA_YOUT8);
+  
+  // Do some conditioning
+  yVal = abs(yVal);
+  if (yVal > 64) {
+    yVal = 64;
+  }
+  yVal = yVal / 4;
+  yVal = yVal * yVal;
+  analogWrite(led2Pin, yVal);
   
   delay(50);
 }

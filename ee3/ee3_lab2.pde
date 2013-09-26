@@ -18,14 +18,14 @@ void loop() {
   int potIn = analogRead(potPin) / 4;
 
   // Transmit data here!
-  /*YOUR CODE HERE*/
+  Serial.write(potIn);
 
   delay(100);
 
   while (Serial1.available() > 0) {
     // Read received data here!
-    char inByte = /*YOUR CODE HERE*/
+    char inByte = Serial.read();
     // Process received data here!
-    analogWrite(led1Pin, /*YOUR CODE HERE*/);
+    analogWrite(led1Pin, inByte);
   }
 }
