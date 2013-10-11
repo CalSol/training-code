@@ -13,7 +13,7 @@ void setup() {
   pinMode(PIN_LED2, OUTPUT);
   pinMode(PIN_SWITCH, INPUT);
   
-  digitalWrite(PIN_SWITCH, 1);   // pull-up for switch
+  digitalWrite(PIN_SWITCH, 1);    // pull-up for switch
   digitalWrite(PIN_UART1_RX, 1);  // pull-up for external UART RX
   
   Serial.println("Ready");
