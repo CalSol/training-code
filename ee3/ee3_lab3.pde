@@ -33,6 +33,8 @@ void setup() {
   Wire.beginTransmission(TMP100_I2C_ADDR);
   Wire.send(TMP100_REG_TEMPERATURE);
   Wire.endTransmission();
+  
+  Serial.println("Ready");
 }
 
 void loop() {

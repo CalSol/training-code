@@ -1,21 +1,23 @@
-int led1Pin = 12;
-int led2Pin = 13;
-int switchPin = 18;
-int potPin = 0;
+const int PIN_LED1 = 12;
+const int PIN_LED2 = 13;
+const int PIN_SWITCH = 18;
+const int PIN_POT = 0;
 
 void setup() {
   Serial.begin(9600);   // Initialize the USB console
   Serial1.begin(9600);  // Initialize the external UART port
   
-  pinMode(led1Pin, OUTPUT);
-  pinMode(led2Pin, OUTPUT);
-  pinMode(switchPin, INPUT);
+  pinMode(PIN_LED1, OUTPUT);
+  pinMode(PIN_LED2, OUTPUT);
+  pinMode(PIN_SWITCH, INPUT);
   
-  digitalWrite(switchPin, 1);
+  digitalWrite(PIN_SWITCH, 1);
+  
+  Serial.println("Ready");
 }
 
 void loop() {
-  int potIn = analogRead(potPin) / 4;
+  int potIn = analogRead(PIN_POT) / 4;
 
   // Transmit data here!
   /*YOUR CODE HERE*/
@@ -26,6 +28,6 @@ void loop() {
     // Read received data here!
     char inByte = /*YOUR CODE HERE*/
     // Process received data here!
-    analogWrite(led1Pin, /*YOUR CODE HERE*/);
+    analogWrite(PIN_LED1, /*YOUR CODE HERE*/);
   }
 }

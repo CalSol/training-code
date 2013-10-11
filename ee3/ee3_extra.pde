@@ -1,11 +1,11 @@
 #include <SPI.h>
 
-int led1Pin = 12;
-int led2Pin = 13;
-int switchPin = 18;
-int potPin = 0;
+const int PIN_LED1 = 12;
+const int PIN_LED2 = 13;
+const int PIN_SWITCH = 18;
+const int PIN_POT = 0;
 
-int aclCSPin = 2;
+const int PIN_ACL_CS = 2;
 
 // MMA7455 Register Map
 int MMA_XOUTL = 0x00;  // X-axis output LSB
@@ -29,14 +29,14 @@ int aclWriteReg(int reg, int value);
 void setup() {
   Serial.begin(9600);
   
-  pinMode(led1Pin, OUTPUT);
-  pinMode(led2Pin, OUTPUT);
-  pinMode(switchPin, INPUT);
+  pinMode(PIN_LED1, OUTPUT);
+  pinMode(PIN_LED2, OUTPUT);
+  pinMode(PIN_SWITCH, INPUT);
   
-  digitalWrite(switchPin, HIGH);
+  digitalWrite(PIN_SWITCH, HIGH);
   
-  pinMode(aclCSPin, OUTPUT);
-  digitalWrite(aclCSPin, HIGH);
+  pinMode(PIN_ACL_CS, OUTPUT);
+  digitalWrite(PIN_ACL_CS, HIGH);
   
   SPI.begin();
 
@@ -47,20 +47,22 @@ void setup() {
   int aclResp = aclReadReg(MMA_I2CAD);
     
   if (aclResp != 0b10011101) {
-    digitalWrite(led1Pin, LOW);
-    digitalWrite(led2Pin, HIGH);
+    digitalWrite(PIN_LED1, LOW);
+    digitalWrite(PIN_LED2, HIGH);
     while (1) {
       Serial.println("Accelerometer initialization failed");
       Serial.println(aclResp);
       delay(1000);
     }
   } else {
-    digitalWrite(led1Pin, LOW);
-    digitalWrite(led2Pin, LOW);
+    digitalWrite(PIN_LED1, LOW);
+    digitalWrite(PIN_LED2, LOW);
   }
   
   // Bring the accelerometer out of idle
   aclWriteReg(MMA_MCTL, 0b10000101);
+  
+  Serial.println("Ready");
 }
 
 void loop() {
@@ -78,7 +80,7 @@ void loop() {
   /* YOUR CODE HERE */
   
   // Write the result as the PWM duty cycle
-  analogWrite(led1Pin, xVal);
+  analogWrite(PIN_LED1, xVal);
   
   // Repeat for the Y-axis
   /* YOUR CODE HERE */
@@ -91,7 +93,7 @@ void loop() {
 int aclReadReg(int reg) {
   int data;
   // bring CS low (active)
-  digitalWrite(aclCSPin, LOW);
+  digitalWrite(PIN_ACL_CS, LOW);
   
   reg = 0b01111110 & (reg << 1);
   
@@ -101,7 +103,7 @@ int aclReadReg(int reg) {
   data = SPI.transfer(0x00);
   
   // return CS high (idle)
-  digitalWrite(aclCSPin, HIGH);
+  digitalWrite(PIN_ACL_CS, HIGH);
   
   return data;
 }
@@ -110,7 +112,7 @@ int aclReadReg(int reg) {
 int aclWriteReg(int reg, int value) {
   int data;
   // bring CS low (active)
-  digitalWrite(aclCSPin, LOW);
+  digitalWrite(PIN_ACL_CS, LOW);
   
   reg = 0b10000000 | (reg << 1);
   
@@ -121,7 +123,7 @@ int aclWriteReg(int reg, int value) {
   SPI.transfer(value);
   
   // return CS high (idle)
-  digitalWrite(aclCSPin, HIGH);
+  digitalWrite(PIN_ACL_CS, HIGH);
   
   return data;
 }
